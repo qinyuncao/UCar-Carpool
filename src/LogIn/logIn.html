@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UCar - Log In</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <a href="../Main/main.html" class="title">UCar</a>
+    <div class="header-buttons">
+      <button onclick="login()">Log In</button>
+      <button onclick="signup()">Sign Up</button>
+    </div>
+  </header>
+
+  <div class="center-window">
+    <div class="frame">
+    <h2 style="text-align: center;">Log In</h2>
+    <form id="login-form">
+      <input type="email" name="email" placeholder="Enter your UMass Email" required>
+      <input type="password" name="password" placeholder="Enter Your Password" required>
+      <div class="form-buttons">
+        <button type="button" onclick="forgotPassword()">Forgot Password</button>
+        <button type="reset">Cancel</button>
+        <button type="submit">Sign In</button>
+      </div>
+    </form>
+    </div>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
