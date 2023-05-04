@@ -25,7 +25,7 @@ body {
   gap: 10px;
 }
 
-.logout-button {
+.header button {
   background-color: transparent;
   color: white;
   border: 2px solid white;
