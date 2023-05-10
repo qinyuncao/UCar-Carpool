@@ -5,12 +5,7 @@ body {
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background-color: red;
-  padding: 10px 20px;
-  height: 50px;
   color: white;
   font-size: 1.2rem;
 }
@@ -33,40 +28,28 @@ body {
   cursor: pointer;
 }
 
-.logout-button:hover {
+.header button:hover {
   background-color: white;
   color: red;
 }
 
-.search-container {
-  display: flex;
-  justify-content: center;
-  padding-top: 30px;
+.section-container {
+  margin-top: 20px;
 }
 
-.search-bar {
-  display: flex;
-  align-items: center;
-  width: 60%;
-  background-color: #f1f1f1;
-  padding: 10px;
-  border-radius: 4px;
+.create-ride-btn {
+  bottom: 2.5%;
+  left: 2.5%;
+  width: 15%;
 }
 
-.search-icon {
-  color: #777;
-}
 
-#search-input {
-  border: none;
-  background-color: transparent;
-  outline: none;
-  padding-left: 5px;
-  width: 100%;
-}
 
-.welcome-box {
-  border: 2px solid black;
+.box1,
+.box2,
+.box3 {
+  background-color: white;
+  text-align: center;
 }
 
 .welcome-text {
@@ -75,42 +58,23 @@ body {
 }
 
 .name-text {
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin: 0;
 }
 
-.sections-container {
-  position: fixed;
-  top: 100px;
-  left: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 15%;
-  margin-bottom: 20px;
+
+.card {
+  width: 100%;
 }
 
-.section-box {
-  background-color: white;
-  padding: 10px;
-  border-radius: 4px;
-  text-align: center;
-  border: 2px solid black;
-}
-
-.create-ride-btn {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  background-color: red;
-  color: white;
-  border: none;
-  padding: 10px 12px;
-  cursor: pointer;
-  width: 15%;
+.card-body {
   text-align: center;
 }
 
-.create-ride-btn:hover {
-  background-color: rgba(255, 0, 0, 0.8);
+.card-title {
+  font-size: 1.5rem;
+}
+
+.card-text {
+  font-size: 1.2rem;
 }
