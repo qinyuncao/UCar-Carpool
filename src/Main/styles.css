@@ -34,3 +34,35 @@ body {
   background-color: white;
   color: red;
 }
+
+.text-box{
+  width: 90%;
+  color:black;
+  position:absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+.text-box h1{
+  font-size: 50px;
+}
+
+.CRTKM{
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  padding: 12px 34px;
+  font-size:18px;
+  background:transparent;
+  position:relative;
+  cursor: pointer;
+  margin-top: 40px;
+}
+
+.CRTKM:hover{
+  border: 1px solid #f55f54;
+  background-color: #f55f54;
+  transition: 1s;
+}

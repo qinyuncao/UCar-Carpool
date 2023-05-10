@@ -9,14 +9,7 @@ document.getElementById('logInButton').addEventListener('click',async() => {
   //If login succesful, go to main page with user logged in
   if (response) {
       document.getElementById('userUpdate').innerText = 'Correct username and password';
-      await fetch('/currentuser',{
-          method:'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({user: response})
-      });
-      window.location.href = 'mainPage2.html';
+      window.location.href = '../Search/search.html';
   }
   else {
       document.getElementById('userUpdate').innerText = 'Sorry! Inputted username/password is not correct';

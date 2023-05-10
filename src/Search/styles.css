@@ -44,12 +44,11 @@ body {
 }
 
 
-
-.box1,
-.box2,
-.box3 {
-  background-color: white;
-  text-align: center;
+.PYK-text{
+  font-size: 1.3rem;
+}
+.RYS-text{
+  font-size: 1.3rem;
 }
 
 .welcome-text {
@@ -63,9 +62,6 @@ body {
 }
 
 
-.card {
-  width: 100%;
-}
 
 .card-body {
   text-align: center;
