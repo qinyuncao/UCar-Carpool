@@ -1,9 +1,20 @@
 import express from "express";
 import db from "./database.mjs";
-import { ObjectId } from "mongodb";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+// import { ObjectId } from "mongodb";
 
 const router = express.Router();
 
+function checkUser(req, res, next) {
+    jwt.verify(token, process.env.TOKEN_SECRET, { algorithms: ['RS256'] },
+    function(err, decoded){
+        if (err) return res.status(403).send({error: "You need a new token!"});
+        return next();
+    });
+}
+
+// Testing simple get method on the auth collection
 router.get("/test", async (req, res) => {
     let collection = await db.collection(process.env.AUTH_COLLECTION_NAME);
     let query = {username: "testingUserName"};
@@ -11,6 +22,94 @@ router.get("/test", async (req, res) => {
     
     if (!result) res.send("Not found").status(404);
     else res.send(result).status(200);
+})
+
+// Testing simple get method on the auth collection
+router.get("/token", checkuser, async (req, res) => {
+    res.status(200).send("Welcome to UCar ");
+})
+
+// Sign up method, body needs to be json
+// link: https://www.npmjs.com/package/bcrypt
+// TODO Email Confirmation
+router.post("/signup", async (req, res) => {
+    let collection = await db.collection(process.env.AUTH_COLLECTION_NAME);
+    let username = req.body.username;
+    let password = req.body.password;
+    let confirm_password = req.body.confirm_password;
+
+    // Check if the required information are null
+    if (!username || !password || !confirm_password){
+        return res.status(400).send({
+            message: "Need more details!"
+        });
+    }
+
+    // Check if it is umass email
+    if (!username.includes("@umass.edu")){
+        return res.status(400).send({
+            message: "Your username needs to be umass email!"
+        });
+    }
+
+    // Check if user already exist
+    let query = {username: username};
+    let result = await collection.findOne(query);
+    if (result){
+        return res.status(400).send({
+            message: "User Already exist!"
+        });
+    }
+
+    // Check if password and confirm_password is the same
+    if (password !== confirm_password){
+        return res.status(400).send({
+            message: "Please confirm your password!"
+        });
+    }
+
+    // Hash and store the password
+    bcrypt.hash(password, 10).then(
+        async function(err, hash) {
+            if (err){
+                return res.status(400).send({
+                    message: "Can not generate the hash!"
+                });
+            }
+            // Store hash in your password DB.
+            else{
+                let result = await collection.insertOne({username: username, password: hash});
+                return res.send(result).status(204);
+            }
+        }
+    );   
+})
+
+// TODO provides jwt token
+router.post("/login", async (req, res) => {
+    let collection = await db.collection(process.env.AUTH_COLLECTION_NAME);
+    let username = req.body.username;
+    let password = req.body.password;
+
+    // Find the user, return error if not found
+    let query = {username: username};
+    let result = await collection.findOne(query);
+    if (!result) return res.status(400).send({message: "Can not find the user!"});
+
+    bcrypt.compare(password, result.password).then(
+        function(err, result) {
+            if (err) return res.status(400).send({err});
+            if (!result) return res.status(400).send({error: "Incorrect Password"});
+            // Provides 1hr JWT token
+            let token = jwt.sign({exp: Math.floor(Date.now() / 1000) + (60 * 60),username: username}, 
+            process.env.TOKEN_SECRET, { algorithms: ['RS256'] },
+            function(err, token){
+                if (err) return res.status(400).send({message: "Can not generate token"});
+                return res.status(200).send(token);
+            })
+        }
+    );
+    // return res.status(200).send(result);
 })
 
 // // Get a list of 50 posts
