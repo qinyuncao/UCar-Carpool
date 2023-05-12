@@ -1,13 +1,17 @@
-function login() {
-    window.location.href = 'logIn.html';
-  }
+document.getElementById('logInButton').addEventListener('click',async() => {
+    
+  const inputUsername = document.getElementById('email').value;
+  const inputPassword = document.getElementById('password').value;
   
-  function signup() {
-    window.location.href = '../SignUp/signUp.html';
+  //Insert code to check if this object is in the server. If it is, the user should be logged in
+  const response = await (await fetch('/users/login/'+inputUsername+'/'+inputPassword)).json();
+
+  //If login succesful, go to main page with user logged in
+  if (response) {
+      document.getElementById('userUpdate').innerText = 'Correct username and password';
+      window.location.href = '../Search/search.html';
   }
-  
-  function forgotPassword() {
-    // Navigate to the forgot password page or show the forgot password form
-    console.log('Forgot Password button clicked');
+  else {
+      document.getElementById('userUpdate').innerText = 'Sorry! Inputted username/password is not correct';
   }
-  
+});
