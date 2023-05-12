@@ -76,20 +76,18 @@ router.post("/signup", async (req, res) => {
     }
 
     // Hash and store the password
-    bcrypt.hash(password, 10).then(
-        async function (err, hash) {
-            if (err) {
-                return res.status(400).send({
-                    message: "Can not generate the hash!"
-                });
-            }
-            // Store hash in your password DB.
-            else {
-                let result = await collection.insertOne({ username: username, password: hash });
-                return res.send(result).status(204);
-            }
+    bcrypt.hash(password, 10, async function(err, hash){
+        if (err) {
+            return res.status(400).send({
+                message: "Can not generate the hash!"
+            });
         }
-    );
+        // Store hash in your password DB.
+        else {
+            let result = await collection.insertOne({ username: username, password: hash });
+            return res.send(result).status(204);
+        }
+    });
 })
 
 // Login route, takes username, password, return a jwt token
