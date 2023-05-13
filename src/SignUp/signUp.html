@@ -30,8 +30,8 @@
               <h3 class="card-title mb-4">Sign Up</h3>
               <form class="row g-3">
                 <div class="col-12">
-                  <label for="full name" class="form-label">Full Name</label>
-                  <input type="full name" class="form-control" id="full name"
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" class="form-control" id="name"
                     required>
                 </div>
 
@@ -47,18 +47,17 @@
                 </div>
 
                 <div class="col-12">
-                  <label for="confirm password" class="form-label">Confirm
-                    Password</label>
-                  <input type="confirm password" class="form-control"
-                    id="confirm password" required>
+                  <label for="confirm password" class="form-label">Confirm Password</label>
+                  <input type="password" class="form-control" id="confirm password"
+                    required>
                 </div>
                 <br>
                 <div id="userUpdate"></div>
                 <br>
 
                 <div class="col-12 d-flex justify-content-between">
-                  <button type="button" class="btn btn-secondary">Cancel</button>
-                  <button type="submit" class="btn btn-primary">Sign Up</button>
+                  <a href="../Main/main.html"><button type="button" class="btn btn-secondary">Cancel</button></a>
+                  <input type="button" value="Sign Up" id="signupbutton" class="btn btn-primary">
                 </div>
               </form>
 

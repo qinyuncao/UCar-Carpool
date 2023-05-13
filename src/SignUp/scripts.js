@@ -1,11 +1,12 @@
 document.getElementById('signupbutton').addEventListener('click', async function(){
-  const inputFullName = document.getElementById('full name').value;
+  console.log("clicked");
   const inputEmail = document.getElementById('email').value;
+  const inputName = document.getElementById('name').value;
   const inputPassword = document.getElementById('password').value;
   const reInputPassword = document.getElementById('confirm password').value;
   const inputData = {
       email:inputEmail,
-      fullname:inputFullName,
+      name:inputName,
       password:inputPassword
   };
 
@@ -16,11 +17,11 @@ document.getElementById('signupbutton').addEventListener('click', async function
   }
 
   //Fill all fields
-  if(!(inputFullName&& inputPassword && reInputPassword)) {
+  if(!(inputName&& inputPassword && reInputPassword)) {
       document.getElementById('userUpdate').innerText = 'Sorry! You must fill in all fields.';
       return;
   }
-
+  console.log("??")
   //The passwords do not match
   if (!(inputPassword === reInputPassword)) {
       document.getElementById('userUpdate').innerText = 'Sorry! The passwords do not match.';
@@ -35,18 +36,18 @@ document.getElementById('signupbutton').addEventListener('click', async function
 
 
   //check if inputted username is in the database, if so alert the user. If not, add it to the data and log the user in
-  const response = await fetch('/users/'+inputEmail);
+  const response = await fetch('http://localhost:5500/users/'+inputEmail);
   if(response.ok) {
       document.getElementById('userUpdate').innerText = 'The information has been stored!';
       //post object to server
-      await fetch('/users',{
+      await fetch('http://localhost:5500/users',{
           method:'POST',
           headers: {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify(inputData)
       });
-      window.location.href = "../LogIn.logIn.html";
+      window.location.href = "../LogIn/logIn.html";
   }
   else {
       document.getElementById('userUpdate').innerText = 'Sorry! That user already exists.';

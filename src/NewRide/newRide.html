@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Ride</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+  </head>
+  <body>
+    <header class="header d-flex justify-content-between align-items-center
+      bg-danger px-3 py-2">
+      <a href="../Main/main.html" class="text-decoration-none text-white">Ucar</a>
+      <div class="d-flex gap-2">
+        <a href="../SignUp/signUp.html"><button class="btn btn-outline-light">Sign
+            Up</button></a>
+        <a href="../LogIn/logIn.html"><button class="btn btn-outline-light">Log
+            In</button></a>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-12">
+          <div class="card my-5">
+            <div class="card-body">
+              <h3 class="card-title mb-4">Create a New Ride</h3>
+              <form class="row g-3">
+                <div class="col-12">
+                  <label for="title" class="form-label">Title</label>
+                  <input type="text" class="form-control" id="title"
+                    required>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="departure" class="form-label">Departure</label>
+                    <input type="text" class="form-control" id="departure"
+                      required>
+                  </div>
+
+                <div class="col-md-6">
+                    <label for="destination" class="form-label">Destination</label>
+                    <input type="text" class="form-control" id="Destination"
+                      required>
+                  </div>
+
+                <div class="col-md-4">
+                  <label for="remainSlot" class="form-label">Remaining Slots</label>
+                  <input type="number" class="form-control" id="remainSlot" max="6" min="1" required>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="date" class="form-label">Date</label>
+                    <input type="date" class="form-control" id="date" required>
+                  </div>
+
+                <div class="col-md-4">
+                    <label for="time" class="form-label">Departure Time</label>
+                    <input type="time" class="form-control" id="time" required>
+                </div>
+
+                <div class="col-12">
+                    <label for="phoneNum" class="form-label">Contact Number</label>
+                    <input type="tel" class="form-control" id="phoneNum" required>
+                </div>
+
+                <div class="col-12">
+                    <label for="details" class="form-label">Details</label>
+                    <textarea class="form-control" id="details" rows="3" maxlength="60"  required></textarea>
+                  </div>
+
+
+            
+                <br>
+                <div id="userUpdate"></div>
+                <br>
+
+                <div class="col-12 d-flex justify-content-between">
+                  <a href="../Search/search.html"><button type="button" class="btn btn-secondary">Cancel</button></a>
+                  <input type="button" value="Submit" id="submitridebutton" class="btn btn-primary">
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
