@@ -33,7 +33,7 @@ router.get("/test", async (req, res) => {
 
 // Testing simple get method on the token, returns the loggedin user's username
 router.get("/token", checkUser, async (req, res) => {
-    res.status(200).send(req.user.username);
+    res.status(200).send(req.user);
 })
 
 // Sign up method, body needs to be json
@@ -48,14 +48,14 @@ router.post("/signup", async (req, res) => {
     // Check if the required information are null
     if (!username || !password || !confirm_password) {
         return res.status(400).send({
-            message: "Need more details!"
+            error: "Need more details!"
         });
     }
 
     // Check if it is umass email
     if (!username.includes("@umass.edu")) {
         return res.status(400).send({
-            message: "Your username needs to be umass email!"
+            error: "Your username needs to be umass email!"
         });
     }
 
@@ -64,14 +64,14 @@ router.post("/signup", async (req, res) => {
     let result = await collection.findOne(query);
     if (result) {
         return res.status(400).send({
-            message: "User Already exist!"
+            error: "User Already exist!"
         });
     }
 
     // Check if password and confirm_password is the same
     if (password !== confirm_password) {
         return res.status(400).send({
-            message: "Please confirm your password!"
+            error: "Please confirm your password!"
         });
     }
 
@@ -79,13 +79,13 @@ router.post("/signup", async (req, res) => {
     bcrypt.hash(password, 10, async function(err, hash){
         if (err) {
             return res.status(400).send({
-                message: "Can not generate the hash!"
+                error: "Can not generate the hash!"
             });
         }
         // Store hash in your password DB.
         else {
             let result = await collection.insertOne({ username: username, password: hash });
-            return res.send(result).status(204);
+            return res.send(result.acknowledged).status(200);
         }
     });
 })
@@ -99,7 +99,7 @@ router.post("/login", async (req, res) => {
     // Find the user, return error if not found
     let query = { username: username };
     let user = await collection.findOne(query);
-    if (!user) return res.status(400).send({ message: "Can not find the user!" });
+    if (!user) return res.status(400).send({ error: "Can not find the user!" });
 
     // console.log(bcrypt.compare(password, result))
 
@@ -113,7 +113,7 @@ router.post("/login", async (req, res) => {
 
     jwt.sign({ exp: Math.floor(Date.now() / 1000) + (60 * 60), username: username },
         process.env.TOKEN_SECRET, function (err, token) {
-            if (err) return res.status(400).send({ message: "Can not generate token, " + err });
+            if (err) return res.status(400).send({ error: "Can not generate token, " + err });
             return res.status(200).send(token);
         })
 
