@@ -2,7 +2,7 @@ import express from "express";
 import db from "../database.mjs";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import {checkUser} from "../middleware/auth.mjs";
+import { checkUser } from "../middleware/auth.mjs";
 // import { ObjectId } from "mongodb";
 
 const router = express.Router();
@@ -76,7 +76,7 @@ router.post("/signup", async (req, res) => {
     }
 
     // Hash and store the password
-    bcrypt.hash(password, 10, async function(err, hash){
+    bcrypt.hash(password, 10, async function (err, hash) {
         if (err) {
             return res.status(400).send({
                 error: "Can not generate the hash!"
@@ -106,17 +106,14 @@ router.post("/login", async (req, res) => {
     bcrypt.compare(password, user.password)
         .then((result) => {
             if (!result) return res.status(400).send({ error: "Incorrect Password" });
+            else {
+                jwt.sign({ exp: Math.floor(Date.now() / 1000) + (60 * 60), username: username },
+                    process.env.TOKEN_SECRET, function (err, token) {
+                        if (err) return res.status(400).send({ error: "Can not generate token, " + err });
+                        return res.status(200).send(token);
+                    })
+            }
         })
-        .catch((err) => {
-            return res.status(400).send({ error: "Can not check the hash password" })
-        });
-
-    jwt.sign({ exp: Math.floor(Date.now() / 1000) + (60 * 60), username: username },
-        process.env.TOKEN_SECRET, function (err, token) {
-            if (err) return res.status(400).send({ error: "Can not generate token, " + err });
-            return res.status(200).send(token);
-        })
-
 })
 
 // // Get a list of 50 posts
