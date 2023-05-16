@@ -25,13 +25,7 @@ window.addEventListener('load', async () => {
     postContainer.appendChild(createPostCard(posts[i]));
   }
 
-  //   const response = await fetch('http://127.0.0.1:3000/ride/avaliable-rides',{
-  //     method:'GET',
-  //     headers: {
-  //         'Authorization':sessionStorage.getItem('token')
-  //     }
-  // });
-  //Use reponse instead after testing
+  //Fetch currrent user's post
   let userPosts;
   let myrides = await fetch('http://127.0.0.1:3000/ride/user-posted-rides',{
     method:'GET',
@@ -47,29 +41,6 @@ window.addEventListener('load', async () => {
     userPosts = myridesData;
   }
 
-  // userPosts = posts = [
-  // {
-  //   "title": "Boston TO NY",
-  //   "date": "2019/5/5",
-  //   "time": "11:15 AM",
-  //   "departure": "Boston",
-  //   "destination": "Amherst",
-  //   "remainSlot": 4,
-  //   "phoneNum": "4133799999",
-  //   "details": "asldkfjeljflkajsdklfjalkwej"
-  // },
-  // {
-  //   "title": "Boston TO NY",
-  //   "date": "2019/5/5",
-  //   "time": "11:15 AM",
-  //   "departure": "Boston",
-  //   "destination": "Amherst",
-  //   "remainSlot": 4,
-  //   "phoneNum": "4133799999",
-  //   "details": "asldkfjeljflkajsdklfjalkwej"
-  // }
-  // ];
-
   var userRideContainer = document.getElementById("userRide-container");
   while (userRideContainer.firstChild) {
     userRideContainer.removeChild(userRideContainer.firstChild);
@@ -78,6 +49,24 @@ window.addEventListener('load', async () => {
   for (var i = 0; i < userPosts.length; i++) {
     userRideContainer.appendChild(createUserPostCard(userPosts[i]));
   }
+
+  let user_name;
+  // Fetch current user's name
+  result = await fetch('http://127.0.0.1:3000/account/getname',{
+    method:'GET',
+    headers: {
+        'Authorization':sessionStorage.getItem('token')
+    }
+  });
+  jsonData = await result.text();
+  if (!result.ok) {
+    console.log(jsonData.error);
+  }
+  else{
+    user_name = jsonData;
+  }
+  var displayName = document.getElementById("displayName");
+  displayName.innerText = user_name;
 
 
 
