@@ -44,6 +44,7 @@ router.post("/signup", async (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
     let confirm_password = req.body.confirm_password;
+    let name = req.body.name;
 
     // Check if the required information are null
     if (!username || !password || !confirm_password) {
@@ -84,7 +85,7 @@ router.post("/signup", async (req, res) => {
         }
         // Store hash in your password DB.
         else {
-            let result = await collection.insertOne({ username: username, password: hash });
+            let result = await collection.insertOne({ username: username, password: hash, name: name});
             return res.send(result.acknowledged).status(200);
         }
     });

@@ -1,62 +1,71 @@
 window.addEventListener('load', async () => {
-  //   const response = await fetch('http://127.0.0.1:3000/ride/avaliable-rides',{
-  //     method:'GET',
-  //     headers: {
-  //         'Authorization':sessionStorage.getItem('token')
-  //     }
-  // });
-  //Use reponse instead after testing
-  posts = [{
-    "title": "Boston TO NY",
-    "date": "2019/5/5",
-    "time": "11:15 AM",
-    "departure": "Boston",
-    "destination": "NYC",
-    "remainSlot": 4,
-    "phoneNum": "4133799999",
-    "details": "asldkfjeljflkajsdklfjalkwejasdfaefasdfasefasdfaefaseafsefasea1231231231312312312312"
-  },
-  {
-    "title": "Boston TO NY",
-    "date": "2019/5/5",
-    "time": "11:15 AM",
-    "departure": "Boston",
-    "destination": "Boston",
-    "remainSlot": 4,
-    "phoneNum": "4133799999",
-    "details": "asldkfjeljflkajsdklfjalkwej"
-  },
-  {
-    "title": "Boston TO NY",
-    "date": "2019/5/5",
-    "time": "11:15 AM",
-    "departure": "Boston",
-    "destination": "Amherst",
-    "remainSlot": 4,
-    "phoneNum": "4133799999",
-    "details": "asldkfjeljflkajsdklfjalkwej"
-  },
-  {
-    "title": "Boston TO NY",
-    "date": "2019/5/5",
-    "time": "11:15 AM",
-    "departure": "Boston",
-    "destination": "NYC",
-    "remainSlot": 4,
-    "phoneNum": "4133799999",
-    "details": "asldkfjeljflkajsdklfjalkwej"
-  },
-  {
-    "title": "Boston TO NY",
-    "date": "2019/5/5",
-    "time": "11:15 AM",
-    "departure": "Boston",
-    "destination": "Amherst",
-    "remainSlot": 4,
-    "phoneNum": "4133799999",
-    "details": "asldkfjeljflkajsdklfjalkwej"
+  // Fetch all the avaliable rides
+  let posts;
+  let result = await fetch('http://127.0.0.1:3000/ride/avaliable-rides',{
+    method:'GET',
+    headers: {
+        'Authorization':sessionStorage.getItem('token')
+    }
+  });
+  let jsonData = await result.json();
+  if (!result.ok) {
+    console.log(jsonData.error);
   }
-  ];
+  else{
+    posts = jsonData;
+  }
+  //Use reponse instead after testing
+  // posts = [{
+  //   "title": "Boston TO NY",
+  //   "date": "2019/5/5",
+  //   "time": "11:15 AM",
+  //   "departure": "Boston",
+  //   "destination": "NYC",
+  //   "remainSlot": 4,
+  //   "phoneNum": "4133799999",
+  //   "details": "asldkfjeljflkajsdklfjalkwejasdfaefasdfasefasdfaefaseafsefasea1231231231312312312312"
+  // },
+  // {
+  //   "title": "Boston TO NY",
+  //   "date": "2019/5/5",
+  //   "time": "11:15 AM",
+  //   "departure": "Boston",
+  //   "destination": "Boston",
+  //   "remainSlot": 4,
+  //   "phoneNum": "4133799999",
+  //   "details": "asldkfjeljflkajsdklfjalkwej"
+  // },
+  // {
+  //   "title": "Boston TO NY",
+  //   "date": "2019/5/5",
+  //   "time": "11:15 AM",
+  //   "departure": "Boston",
+  //   "destination": "Amherst",
+  //   "remainSlot": 4,
+  //   "phoneNum": "4133799999",
+  //   "details": "asldkfjeljflkajsdklfjalkwej"
+  // },
+  // {
+  //   "title": "Boston TO NY",
+  //   "date": "2019/5/5",
+  //   "time": "11:15 AM",
+  //   "departure": "Boston",
+  //   "destination": "NYC",
+  //   "remainSlot": 4,
+  //   "phoneNum": "4133799999",
+  //   "details": "asldkfjeljflkajsdklfjalkwej"
+  // },
+  // {
+  //   "title": "Boston TO NY",
+  //   "date": "2019/5/5",
+  //   "time": "11:15 AM",
+  //   "departure": "Boston",
+  //   "destination": "Amherst",
+  //   "remainSlot": 4,
+  //   "phoneNum": "4133799999",
+  //   "details": "asldkfjeljflkajsdklfjalkwej"
+  // }
+  // ];
 
   var postContainer = document.getElementById("post-container");
   //Delete all posts in the container
@@ -75,28 +84,43 @@ window.addEventListener('load', async () => {
   //     }
   // });
   //Use reponse instead after testing
-  userPosts = posts = [
-  {
-    "title": "Boston TO NY",
-    "date": "2019/5/5",
-    "time": "11:15 AM",
-    "departure": "Boston",
-    "destination": "Amherst",
-    "remainSlot": 4,
-    "phoneNum": "4133799999",
-    "details": "asldkfjeljflkajsdklfjalkwej"
-  },
-  {
-    "title": "Boston TO NY",
-    "date": "2019/5/5",
-    "time": "11:15 AM",
-    "departure": "Boston",
-    "destination": "Amherst",
-    "remainSlot": 4,
-    "phoneNum": "4133799999",
-    "details": "asldkfjeljflkajsdklfjalkwej"
+  let userPosts;
+  let myrides = await fetch('http://127.0.0.1:3000/ride/user-posted-rides',{
+    method:'GET',
+    headers: {
+        'Authorization':sessionStorage.getItem('token')
+    }
+  });
+  let myridesData = await myrides.json();
+  if (!result.ok) {
+    console.log(myridesData.error);
   }
-  ];
+  else{
+    userPosts = myridesData;
+  }
+
+  // userPosts = posts = [
+  // {
+  //   "title": "Boston TO NY",
+  //   "date": "2019/5/5",
+  //   "time": "11:15 AM",
+  //   "departure": "Boston",
+  //   "destination": "Amherst",
+  //   "remainSlot": 4,
+  //   "phoneNum": "4133799999",
+  //   "details": "asldkfjeljflkajsdklfjalkwej"
+  // },
+  // {
+  //   "title": "Boston TO NY",
+  //   "date": "2019/5/5",
+  //   "time": "11:15 AM",
+  //   "departure": "Boston",
+  //   "destination": "Amherst",
+  //   "remainSlot": 4,
+  //   "phoneNum": "4133799999",
+  //   "details": "asldkfjeljflkajsdklfjalkwej"
+  // }
+  // ];
 
   var userRideContainer = document.getElementById("userRide-container");
   while (userRideContainer.firstChild) {

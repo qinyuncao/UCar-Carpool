@@ -5,9 +5,10 @@ document.getElementById('signupbutton').addEventListener('click', async function
   const inputPassword = document.getElementById('password').value;
   const reInputPassword = document.getElementById('confirm password').value;
   const inputData = {
-      email:inputEmail,
-      name:inputName,
-      password:inputPassword
+      username: inputEmail,
+      name: inputName,
+      password: inputPassword,
+      confirm_password: reInputPassword
   };
 
   //valid Umass Emails
@@ -35,21 +36,22 @@ document.getElementById('signupbutton').addEventListener('click', async function
   }
 
 
-  //check if inputted username is in the database, if so alert the user. If not, add it to the data and log the user in
-  const response = await fetch('http://localhost:5500/users/'+inputEmail);
-  if(response.ok) {
-      document.getElementById('userUpdate').innerText = 'The information has been stored!';
-      //post object to server
-      await fetch('http://localhost:5500/users',{
-          method:'POST',
-          headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(inputData)
-      });
-      window.location.href = "../LogIn/logIn.html";
+ // Call the signup API, provide the login info, 
+ // Display any error message from the backend
+
+  let response = await fetch("http://127.0.0.1:3000/account/signup", {
+    method:"Post",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(inputData),
+  });
+
+  if (response.ok) {
+    window.location.href = "../LogIn/logIn.html";
   }
-  else {
-      document.getElementById('userUpdate').innerText = 'Sorry! That user already exists.';
+  else{
+    let jsonData = await response.json();
+    document.getElementById('userUpdate').innerText = jsonData.error;
   }
 });

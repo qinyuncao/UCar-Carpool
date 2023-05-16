@@ -8,7 +8,7 @@ export function checkUser(req, res, next) {
     // Verity if the token is still avaliable
     jwt.verify(token, process.env.TOKEN_SECRET,
         function (err, decoded) {
-            if (err) return res.status(403).send({ error: "You need a new token!" });
+            if (err) return res.status(401).send({ error: "You need a new token!" });
             req.user = decoded;
             next();
         });

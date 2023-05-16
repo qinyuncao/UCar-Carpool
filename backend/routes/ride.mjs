@@ -38,13 +38,10 @@ router.get("/user-posted-rides", checkUser, async(req, res) => {
     return res.status(200).send(results);
 })
 
-// Get all the rides leave from the same place, to the same destination, still avaliable
-// router.get()
-
 // Post new rides under the current user
 router.post("/post-newride", checkUser, async (req, res) => {
     let collection = await db.collection(process.env.RIDE_COLLECTION_NAME);
-    let currentUser = req.user;
+    let currentUser = req.user.username;
 
     // Check import fields are filled
     let filled = req.body.date && req.body.time && req.body.title && 
