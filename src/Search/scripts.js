@@ -239,11 +239,11 @@ function createPostCard(post) {
   departAndDest.className = 'card-text';
 
   let remainSlot = document.createElement('div');
-  remainSlot.innerText = "Number of Passenger:" + post.remainSlot;
+  remainSlot.innerText = "Number of Passenger:" + post.slot;
   remainSlot.className = 'card-text';
 
   let phoneNum = document.createElement('div');
-  phoneNum.innerText = "Contact Number: " + post.phoneNum;
+  phoneNum.innerText = "Contact Number: " + post.phone;
   phoneNum.className = 'card-text';
 
   let details = document.createElement('div');
