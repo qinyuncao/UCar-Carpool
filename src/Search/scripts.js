@@ -192,7 +192,7 @@ document.getElementById('searchbutton').addEventListener('click', async function
 function createPostCard(post) {
   let card = document.createElement('div');
   card.className = 'card mb-2 mx-2';
-  card.style = 'width:30rem';
+  card.style = 'width:30%';
 
   let img = document.createElement('img');
   img.className = 'card-image-top'
@@ -244,7 +244,7 @@ function createPostCard(post) {
 function createUserPostCard(post) {
   let card = document.createElement('div');
   card.className = 'card mb-2';
-  card.style = 'width:31rem';
+  card.style = 'width:100%';
 
 
   let cardBody = document.createElement('div');
