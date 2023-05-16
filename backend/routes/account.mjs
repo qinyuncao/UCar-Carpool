@@ -3,23 +3,8 @@ import db from "../database.mjs";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { checkUser } from "../middleware/auth.mjs";
-// import { ObjectId } from "mongodb";
 
 const router = express.Router();
-
-// Middleware to check if the user is logged in with jwt token
-// function checkUser(req, res, next) {
-//     let authHeader = req.headers['authorization'];
-//     let token = authHeader && authHeader.split(' ')[1];
-
-//     // Verity if the token is still avaliable
-//     jwt.verify(token, process.env.TOKEN_SECRET,
-//         function (err, decoded) {
-//             if (err) return res.status(403).send({ error: "You need a new token!" });
-//             req.user = decoded;
-//             next();
-//         });
-// }
 
 // Testing simple get method on the auth collection
 router.get("/test", async (req, res) => {
@@ -117,67 +102,21 @@ router.post("/login", async (req, res) => {
         })
 })
 
-// // Get a list of 50 posts
-// router.get("/", async (req, res) => {
-//   let collection = await db.collection("posts");
-//   let results = await collection.find({})
-//     .limit(50)
-//     .toArray();
+// Get the current user name
+router.get("/getname", checkUser, async (req, res) => {
+    let collection = await db.collection(process.env.AUTH_COLLECTION_NAME);
+    let currentUser = req.user.username;
 
-//   res.send(results).status(200);
-// });
-
-// // Fetches the latest posts
-// router.get("/latest", async (req, res) => {
-//   let collection = await db.collection("posts");
-//   let results = await collection.aggregate([
-//     {"$project": {"author": 1, "title": 1, "tags": 1, "date": 1}},
-//     {"$sort": {"date": -1}},
-//     {"$limit": 3}
-//   ]).toArray();
-//   res.send(results).status(200);
-// });
-
-// // Get a single post
-// router.get("/:id", async (req, res) => {
-//   let collection = await db.collection("posts");
-//   let query = {_id: ObjectId(req.params.id)};
-//   let result = await collection.findOne(query);
-
-//   if (!result) res.send("Not found").status(404);
-//   else res.send(result).status(200);
-// });
-
-// // Add a new document to the collection
-// router.post("/", async (req, res) => {
-//   let collection = await db.collection("posts");
-//   let newDocument = req.body;
-//   newDocument.date = new Date();
-//   let result = await collection.insertOne(newDocument);
-//   res.send(result).status(204);
-// });
-
-// // Update the post with a new comment
-// router.patch("/comment/:id", async (req, res) => {
-//   const query = { _id: ObjectId(req.params.id) };
-//   const updates = {
-//     $push: { comments: req.body }
-//   };
-
-//   let collection = await db.collection("posts");
-//   let result = await collection.updateOne(query, updates);
-
-//   res.send(result).status(200);
-// });
-
-// // Delete an entry
-// router.delete("/:id", async (req, res) => {
-//   const query = { _id: ObjectId(req.params.id) };
-
-//   const collection = db.collection("posts");
-//   let result = await collection.deleteOne(query);
-
-//   res.send(result).status(200);
-// });
+    // Check if the user exists
+    let result = await collection.findOne({
+        username: currentUser, 
+    });
+    if (result) {
+        return res.status(200).send(result.name);
+    }
+    else{
+        return res.status(400).send({error: "Same ride already exist!"});
+    }
+})
 
 export default router;
