@@ -41,7 +41,7 @@ router.get("/user-posted-rides", checkUser, async(req, res) => {
 // Post new rides under the current user
 router.post("/post-newride", checkUser, async (req, res) => {
     let collection = await db.collection(process.env.RIDE_COLLECTION_NAME);
-    let currentUser = req.user.username.username;
+    let currentUser = req.user.username;
 
     // Check import fields are filled
     let filled = req.body.date && req.body.time && req.body.title && 
