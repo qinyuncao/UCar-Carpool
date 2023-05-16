@@ -15,7 +15,7 @@ router.get("/get-all-rides", checkUser, async (req, res) => {
 // Get all the avaliable rides, except the current user's ride
 router.get("/avaliable-rides", checkUser, async(req, res) => {
     let collection = await db.collection(process.env.RIDE_COLLECTION_NAME);
-    let currentUser = req.user;
+    let currentUser = req.user.username;
     let results;
     try {
         results = await collection.find({username: {'$ne' : currentUser}}).toArray();
@@ -28,7 +28,7 @@ router.get("/avaliable-rides", checkUser, async(req, res) => {
 // Get all the rides under the current user
 router.get("/user-posted-rides", checkUser, async(req, res) => {
     let collection = await db.collection(process.env.RIDE_COLLECTION_NAME);
-    let currentUser = req.user;
+    let currentUser = req.user.username;
     let results;
     try {
         results = await collection.find({username: currentUser}).toArray();
@@ -41,7 +41,7 @@ router.get("/user-posted-rides", checkUser, async(req, res) => {
 // Post new rides under the current user
 router.post("/post-newride", checkUser, async (req, res) => {
     let collection = await db.collection(process.env.RIDE_COLLECTION_NAME);
-    let currentUser = req.user.username;
+    let currentUser = req.user.username.username;
 
     // Check import fields are filled
     let filled = req.body.date && req.body.time && req.body.title && 
@@ -84,7 +84,7 @@ router.post("/post-newride", checkUser, async (req, res) => {
 // Delete a ride, need date & time in req body
 router.post("/remove-ride", checkUser, async(req, res) => {
     let collection = await db.collection(process.env.RIDE_COLLECTION_NAME);
-    let currentUser = req.user;
+    let currentUser = req.user.username;
     
     // Check import fields are filled
     let filled = req.body.date && req.body.time;
