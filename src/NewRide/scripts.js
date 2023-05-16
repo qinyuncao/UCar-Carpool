@@ -31,7 +31,8 @@ document.getElementById('submitridebutton').addEventListener('click', async func
       await fetch('http://localhost:5500/users',{
           method:'POST',
           headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'Authorization':sessionStorage.token
             },
             body: JSON.stringify(inputData)
       });
