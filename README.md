@@ -6,10 +6,7 @@ This application uses Node.js, which requires your machine have Node.js 16.8 or 
 Uses html,CSS,javascript for developing all the view components
 
 How to run:
-```
-npm install
-npm run dev
-```
+open frontend/Main/main.html in chrome
 
 ## Backend
 Uses NodeJS v20 for controller
