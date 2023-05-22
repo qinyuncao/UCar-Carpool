@@ -1,4 +1,7 @@
+//When we load the search page, grab all the information we need from database
+//Include all avaliable ride, current user's ride, current user's name
 window.addEventListener('load', async () => {
+
   // Fetch all the avaliable rides
   let posts;
   let result = await fetch('http://127.0.0.1:3000/ride/avaliable-rides',{
@@ -15,15 +18,14 @@ window.addEventListener('load', async () => {
     posts = jsonData;
   }
 
-  var postContainer = document.getElementById("post-container");
-  //Delete all posts in the container
+  var postContainer = document.getElementById("post-container"); //get the container
   while (postContainer.firstChild) {
-    postContainer.removeChild(postContainer.firstChild);
+    postContainer.removeChild(postContainer.firstChild); //Delete all posts in the container if there is any
+  }
+  for (var i = 0; i < posts.length; i++) {
+    postContainer.appendChild(createPostCard(posts[i])); //Append all card create by createPostCard to container
   }
 
-  for (var i = 0; i < posts.length; i++) {
-    postContainer.appendChild(createPostCard(posts[i]));
-  }
 
   //Fetch currrent user's post
   let userPosts;
@@ -41,17 +43,17 @@ window.addEventListener('load', async () => {
     userPosts = myridesData;
   }
 
-  var userRideContainer = document.getElementById("userRide-container");
+  var userRideContainer = document.getElementById("userRide-container"); //get the container
   while (userRideContainer.firstChild) {
-    userRideContainer.removeChild(userRideContainer.firstChild);
+    userRideContainer.removeChild(userRideContainer.firstChild); //Delete all posts in the container if there is any
   }
-
   for (let i = 0; i < userPosts.length; i++) {
-    userRideContainer.appendChild(createUserPostCard(userPosts[i]));
+    userRideContainer.appendChild(createUserPostCard(userPosts[i])); //Append all card create by createPostCard to container
   }
 
-  let user_name;
+  
   // Fetch current user's name
+  let user_name;
   result = await fetch('http://127.0.0.1:3000/account/getname',{
     method:'GET',
     headers: {
@@ -65,15 +67,13 @@ window.addEventListener('load', async () => {
   else{
     user_name = jsonData;
   }
-  var displayName = document.getElementById("displayName");
+  var displayName = document.getElementById("displayName"); //get the element
   displayName.innerText = user_name;
-
-
-
-
-
 });
 
+
+
+//When hit the search button, grab the filterd posts from database
 document.getElementById('searchbutton').addEventListener('click', async function () {
   const inputDestination = document.getElementById('inputDestination').value.toLowerCase();
   let posts;
@@ -93,17 +93,18 @@ document.getElementById('searchbutton').addEventListener('click', async function
 
   var filtered_post = posts.filter(post=>post.destination.toLowerCase().indexOf(inputDestination)>-1);
   var postContainer = document.getElementById("post-container");
-  //Delete all posts in the container
+  
   while (postContainer.firstChild) {
-    postContainer.removeChild(postContainer.firstChild);
+    postContainer.removeChild(postContainer.firstChild); //Delete all posts in the container
   }
 
   for (var i = 0; i < filtered_post.length; i++) {
-    postContainer.appendChild(createPostCard(filtered_post[i]));
+    postContainer.appendChild(createPostCard(filtered_post[i])); //Append the filtered posts
   }
 
 });
 
+//If there is nothing in the search bar, refresh the page to get all posts
 document.getElementById('inputDestination').addEventListener('input', function (e) {
   if (e.target.value.trim() === '') {
       location.reload();
@@ -111,16 +112,15 @@ document.getElementById('inputDestination').addEventListener('input', function (
 });
 
 
-
+//Create post card
 function createPostCard(post) {
   let card = document.createElement('div');
   card.className = 'card mb-2 mx-2';
   card.style = 'width:30%';
 
-  // Create image based on the car model
   let img = document.createElement('img');
   img.className = 'card-image-top';
-  var img_name ="../photos/"+post.brand+".jpg";
+  var img_name ="../photos/"+post.brand+".jpg"; // Create image based on the car model
   img.src = img_name;
   
 
@@ -158,14 +158,12 @@ function createPostCard(post) {
   cardBody.appendChild(remainSlot);
   cardBody.appendChild(phoneNum);
   cardBody.appendChild(details);
-
-
-
   card.appendChild(img);
   card.appendChild(cardBody);
   return card
 }
 
+//Create User's post card
 function createUserPostCard(post) {
   let card = document.createElement('div');
   card.className = 'card mb-2';
@@ -205,11 +203,9 @@ function createUserPostCard(post) {
     },
     body:JSON.stringify(inputData)
   });
-  location.reload();
+  location.reload(); //Reload the page when hit delete to refresh user's posts
     
   })
-  
-
 
   cardBody.appendChild(title);
   cardBody.appendChild(dateAndTime);

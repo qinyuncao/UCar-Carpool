@@ -1,3 +1,5 @@
+
+//Added Eventlistener for submit button, when hit it, we post the input information to the database
 document.getElementById('submitridebutton').addEventListener('click', async function () {
   console.log("clicked");
   const inputTitle = document.getElementById('title').value;
@@ -33,6 +35,7 @@ document.getElementById('submitridebutton').addEventListener('click', async func
     body: JSON.stringify(inputData)
   })
 
+  //If everything works, back to the search page
   if (response.ok) {
     document.getElementById('userUpdate').innerText = 'The information has been stored!';
     window.location.href = "../Search/search.html";

@@ -1,3 +1,4 @@
+//Added Eventlistener for signup button, when hit it, we posts all the information to database
 document.getElementById('signupbutton').addEventListener('click', async function(){
   console.log("clicked");
   const inputEmail = document.getElementById('email').value;
@@ -22,7 +23,7 @@ document.getElementById('signupbutton').addEventListener('click', async function
       document.getElementById('userUpdate').innerText = 'Sorry! You must fill in all fields.';
       return;
   }
-  console.log("??")
+  
   //The passwords do not match
   if (!(inputPassword === reInputPassword)) {
       document.getElementById('userUpdate').innerText = 'Sorry! The passwords do not match.';

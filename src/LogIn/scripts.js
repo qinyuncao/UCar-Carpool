@@ -1,10 +1,10 @@
+//Added Eventlistener for login button, when hit it, we check if the input information matches with the database
 document.getElementById('logInButton').addEventListener('click',async() => {
     
   const inputEmail = document.getElementById('email').value;
   const inputPassword = document.getElementById('password').value;
   
-  //Insert code to check if this object is in the server. If it is, the user should be logged in
-  // const response = await (await fetch('http://localhost:5500/users/login/'+inputEmail+'/'+inputPassword)).json();
+  //Check if this object is in the server. If it is, the user should be logged in
   let response = await fetch('http://localhost:3000/account/login', {
     method:"Post",
     headers: {
@@ -16,14 +16,13 @@ document.getElementById('logInButton').addEventListener('click',async() => {
     }),
   });
 
-  //If login succesful, go to main page with user logged in
+  //If login succesful, go to search page with user logged in, set the token
+  //If not, give the reason
   if (response.ok) {
       // Token is JWT token saved in session storage
       let token = await response.text();
       token = 'Bearer ' + token;
       sessionStorage.setItem('token', token);
-
-      document.getElementById('userUpdate').innerText = 'Correct username and password';
       window.location.href = '../Search/search.html';
   }
   else {
