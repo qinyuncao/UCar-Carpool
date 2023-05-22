@@ -102,10 +102,15 @@ document.getElementById('searchbutton').addEventListener('click', async function
     postContainer.appendChild(createPostCard(filtered_post[i]));
   }
 
-
-
-
 });
+
+document.getElementById('inputDestination').addEventListener('input', function (e) {
+  if (e.target.value.trim() === '') {
+      location.reload();
+  }
+});
+
+
 
 function createPostCard(post) {
   let card = document.createElement('div');
