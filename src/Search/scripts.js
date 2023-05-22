@@ -46,7 +46,7 @@ window.addEventListener('load', async () => {
     userRideContainer.removeChild(userRideContainer.firstChild);
   }
 
-  for (var i = 0; i < userPosts.length; i++) {
+  for (let i = 0; i < userPosts.length; i++) {
     userRideContainer.appendChild(createUserPostCard(userPosts[i]));
   }
 
@@ -112,10 +112,12 @@ function createPostCard(post) {
   card.className = 'card mb-2 mx-2';
   card.style = 'width:30%';
 
-  let img = document.createElement('img');
-  img.className = 'card-image-top'
-  img.src = '../photos/car.jpg'
   // Create image based on the car model
+  let img = document.createElement('img');
+  img.className = 'card-image-top';
+  var img_name ="../photos/"+post.brand+".jpg";
+  img.src = img_name;
+  
 
   let cardBody = document.createElement('div');
   cardBody.className = 'card-body';
@@ -184,6 +186,23 @@ function createUserPostCard(post) {
   deleteButton.value = 'delete';
   deleteButton.type = 'button';
   deleteButton.className = 'btn btn-danger text-white btn-sm';
+  deleteButton.addEventListener('click', async function () {
+    let inputData = {
+      "date":post.date,
+      "time":post.time
+    };
+    console.log(inputData);
+    let result = await fetch('http://127.0.0.1:3000/ride/remove-ride',{
+    method:'POST',
+    headers: {
+      'Content-Type': 'application/json',
+        'Authorization':sessionStorage.getItem('token')
+    },
+    body:JSON.stringify(inputData)
+  });
+  location.reload();
+    
+  })
   
 
 
