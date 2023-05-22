@@ -1,4 +1,5 @@
 import { MongoClient } from "mongodb";
+import "./loadEnviroment.mjs";
 
 const connectionString = process.env.DB_CONN;
 

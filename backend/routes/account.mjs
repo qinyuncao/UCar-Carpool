@@ -8,17 +8,12 @@ const router = express.Router();
 
 // Testing simple get method on the auth collection
 router.get("/test", async (req, res) => {
-    let collection = await db.collection(process.env.AUTH_COLLECTION_NAME);
-    let query = { username: "testingUserName" };
-    let result = await collection.findOne(query);
-
-    if (!result) res.send("Not found").status(404);
-    else res.send(result).status(200);
+    res.status(200).send("1");
 })
 
 // Testing simple get method on the token, returns the loggedin user's username
 router.get("/token", checkUser, async (req, res) => {
-    res.status(200).send(req.user);
+    res.sendStatus(200).send(req.user);
 })
 
 // Sign up method, body needs to be json
