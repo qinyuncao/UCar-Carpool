@@ -2,3 +2,4 @@ password.txt
 .env
 .DS_Store
 node_modules
+coverage

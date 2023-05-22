@@ -1,4 +1,4 @@
-// Run test with NODE_OPTIONS=--experimental-vm-modules npx jest
+// Run test with NODE_OPTIONS=--experimental-vm-modules npx jest --runInBand
 import app from "../app.mjs";
 import request from "supertest";
 
@@ -31,10 +31,17 @@ describe("Test the root path", () => {
             expect(response.statusCode).toBe(200);
             done();
         })
+    });   
+
+    test('Delete a user', done => {
+        const user = {
+            username: "test@umass.edu"
+        };
+        request(app)
+        .post('/account/delete').send(user)
+        .then(response => {
+            expect(response.statusCode).toBe(200);
+            done();
+        })
     });
-        
-        
-
-          
-
   });

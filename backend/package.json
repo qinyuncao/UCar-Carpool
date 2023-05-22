@@ -5,7 +5,8 @@
   "main": "main.js",
   "type": "module",
   "scripts": {
-    "test": "jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest --runInBand --coverage",
+    "start": "node main.mjs"
   },
   "author": "",
   "license": "ISC",

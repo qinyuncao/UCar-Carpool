@@ -114,4 +114,29 @@ router.get("/getname", checkUser, async (req, res) => {
     }
 })
 
+router.post("/delete", async (req, res) => {
+    let collection = await db.collection(process.env.AUTH_COLLECTION_NAME);
+    let username = req.body.username;
+
+    // Check if the required information are null
+    if (!username) {
+        return res.status(400).send({
+            error: "Need more details!"
+        });
+    }
+
+    // Check if user already exist
+    let query = { username: username };
+    let result = await collection.findOne(query);
+    if (result) {
+        result = await collection.deleteOne(query);
+        return res.status(200).send(result);
+    }
+    else{
+        return res.status(400).send({
+            error: "User does not exist"
+        })
+    }
+})
+
 export default router;
