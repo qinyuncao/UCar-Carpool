@@ -1,6 +1,8 @@
+// This file contains jest config
+// Setup Jest for ECMAScript 6
+
 const config = {
     transform: {},
-    preset: "@shelf/jest-mongodb"
 };
   
 export default config;

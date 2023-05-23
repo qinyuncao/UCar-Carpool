@@ -1,7 +1,8 @@
 import app from "../app.mjs";
 import request from "supertest";
 
-
+// Includes All test cases for backend, account.mjs, ride.mjs
+// Contains in the same file, because requires to create user, and get JWT token
 describe("Test the root path", () => {
 
     test('Create a user', done => {

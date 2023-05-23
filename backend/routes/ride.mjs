@@ -3,6 +3,7 @@ import db from "../database.mjs";
 import { checkUser } from "../middleware/auth.mjs";
 
 // This class is declaring API for rides
+// Including create, get-rides and delete-rides
 const router = express.Router();
 
 // Get all the rides, return array of rides

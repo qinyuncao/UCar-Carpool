@@ -4,6 +4,8 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { checkUser } from "../middleware/auth.mjs";
 
+// This file contains API calls related to user collection
+// Signup, Login, delete user
 const router = express.Router();
 
 // Testing simple get method on the token, returns the loggedin user's username
@@ -109,6 +111,7 @@ router.get("/getname", checkUser, async (req, res) => {
     }
 })
 
+// Post method for delete a user
 router.post("/delete", async (req, res) => {
     let collection = await db.collection(process.env.AUTH_COLLECTION_NAME);
     let username = req.body.username;

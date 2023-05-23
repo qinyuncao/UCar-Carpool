@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 
 // Middleware to check if the user is logged in with jwt token
+// In token is expired, send status code 401
 export function checkUser(req, res, next) {
     let authHeader = req.headers['authorization'];
     let token = authHeader && authHeader.split(' ')[1];

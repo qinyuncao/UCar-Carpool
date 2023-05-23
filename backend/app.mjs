@@ -4,7 +4,7 @@ import account from "./routes/account.mjs";
 import ride from "./routes/ride.mjs";
 import "express-async-errors";
 
-
+// Start the app with ExpressJS
 const app = express();
 
 app.use(cors());
@@ -20,7 +20,3 @@ app.use((err, _req, res, next) => {
 })
 
 export default app;
-
-// export default function add(a,b){
-//     return a+b;
-// }

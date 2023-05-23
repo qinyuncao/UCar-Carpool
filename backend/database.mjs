@@ -1,6 +1,8 @@
 import { MongoClient } from "mongodb";
 import "./loadEnviroment.mjs";
 
+// Get the DB connection info from the .env file
+// Build the mongodb connection with atlas mongodb
 const connectionString = process.env.DB_CONN;
 
 const client = new MongoClient(connectionString);
