@@ -1,0 +1,281 @@
+// Note: 
+// Group Members: Peilan Wang, Yiyan Huang, Qinyun Cao, Jingran Liu
+// Contribution: Peilan Wang & Yiyan Huang (Backend id: peilan_wang, vivihuang0131)
+// Qinyun Cao & Jingran Liu (Frontend id: qinyuncao)
+
+commit 515d303645765b4c2b190d9f958b04b636d5449d
+Author: peilan_wang <lw980627@gmail.com>
+Date:   Mon May 22 20:38:12 2023 -0400
+
+    updated comments in backend and README
+
+commit a06034f534b73c21893bdbeba4645086bf7de5c9
+Author: vivihuang0131 <yiyanhuang@umass.edu>
+Date:   Mon May 22 20:15:12 2023 -0400
+
+    Update test.js
+    
+    add test for backend route
+
+commit e03edf73a9bd22eb21f89bbba4a83d6e77556614
+Author: peilan_wang <lw980627@gmail.com>
+Date:   Mon May 22 20:07:22 2023 -0400
+
+    updated npm commands for quick start and testing for backend
+
+commit e597075915386194ba0feea5fc056f2480d66646
+Author: peilan_wang <lw980627@gmail.com>
+Date:   Mon May 22 18:13:22 2023 -0400
+
+    Added delete user in backend and test
+
+commit 72eca13d3709d5720ac7f98614a3b6d597852d30
+Author: peilan_wang <lw980627@gmail.com>
+Date:   Mon May 22 17:51:48 2023 -0400
+
+    started some backend testing using jest
+
+commit 147cdde3a82a8535dedc6d328b8ee92f46248c62
+Author: qinyuncao <qinyuncao@umass.edu>
+Date:   Mon May 22 14:54:36 2023 -0400
+
+    Update README.md
+
+commit 0942db4bf5a4b3f1b435b38acd9265d9d08d9964
+Author: qinyuncao <qinyuncao@umass.edu>
+Date:   Mon May 22 14:52:20 2023 -0400
+
+    Update README.md
+
+commit f7888152374255d4a3dc28e5c3aeeaf914428fc8
+Author: qinyuncao <qinyuncao@umass.edu>
+Date:   Mon May 22 14:41:54 2023 -0400
+
+    Folder Name change
+
+commit 20b500bdc59e0cbbe8bc945045e859f01c0659f8
+Author: qinyuncao <qinyuncao@umass.edu>
+Date:   Mon May 22 14:40:30 2023 -0400
+
+    Update
+
+commit c2974cb5a5acb8aff97c418bab322c254dee8c53
+Author: qinyuncao <qinyuncao@umass.edu>
+Date:   Sun May 21 22:42:42 2023 -0400
+
+    Update the search bar
+    
+    If it is empty, we refresh the page
+
+commit cbe5ad69f4d2da5d98c736c601013c166b68a06a
+Author: qinyuncao <qinyuncao@umass.edu>
+Date:   Sun May 21 22:36:16 2023 -0400
+
+    Fixed delete button and added images
+
+commit 2de83eab27ce19168aa7658961ca0f06f28c7839
+Author: qinyuncao <qinyuncao@umass.edu>
+Date:   Tue May 16 15:35:02 2023 -0400
+
+    Added Name in search.html
+
+commit fb6e04f093b5588bd95b45be3473354dc3106727
+Author: peilan_wang <lw980627@gmail.com>
+Date:   Tue May 16 15:30:31 2023 -0400
+
+    added getname api
+
+commit df937912d0c5dd4f7602067e6a136a88f61796d2
+Author: qinyuncao <qinyuncao@umass.edu>
+Date:   Tue May 16 15:21:15 2023 -0400
+
+    Update scripts.js
+
+commit 2158610bd0a2cdd9acaf88094630faf950ecf09d
+Author: peilan_wang <lw980627@gmail.com>
+Date:   Tue May 16 15:14:14 2023 -0400
+
+    fix more bugs in ride.mjs
+
+commit 0a4e39c717f3f32e93f9fdb4ad0920d08262879b
+Author: peilan_wang <lw980627@gmail.com>
+Date:   Tue May 16 15:06:03 2023 -0400
+
+    bug fix for ride.mjs
+
+commit fb3793b9110b0eb9703b67a554e1a55634789d01
+Author: qinyuncao <qinyuncao@umass.edu>
+Date:   Tue May 16 15:02:48 2023 -0400
+
+    Update scripts.js
+
+commit 13680b4ef28bc206417a2c2d2d50703a5b78f98c
+Author: peilan_wang <lw980627@gmail.com>
+Date:   Tue May 16 15:00:31 2023 -0400
+
+    updated some api, search page not working
+
+commit b0e18b9f01df77497197915439592f366e3f0c66
+Author: qinyuncao <qinyuncao@umass.edu>
+Date:   Tue May 16 13:50:35 2023 -0400
+
+    Update scripts.js
+
+commit 6e234e88466efb933bd31fdc77d2791dcde0dbfa
+Author: qinyuncao <qinyuncao@umass.edu>
+Date:   Tue May 16 13:21:35 2023 -0400
+
+    Search update
+
+commit e13729488163a939a1cfe8cad5abb954a1418a23
+Author: qinyuncao <qinyuncao@umass.edu>
+Date:   Mon May 15 20:42:25 2023 -0400
+
+    Updated Filter and posts
+
+commit 297b9fb805a2997465beffa71ef0a0d1bd6a37ef
+Author: peilan_wang <lw980627@gmail.com>
+Date:   Mon May 15 00:28:03 2023 -0400
+
+    added new routes for rides info
+
+commit d7e78e2945eecf8fe087e80656906daa30240f1d
+Author: peilan_wang <lw980627@gmail.com>
+Date:   Sun May 14 17:22:04 2023 -0400
+
+    updated the login api and call
+
+commit 9598c60dd38c45b5740674f9ca8042727522d130
+Author: peilan_wang <lw980627@gmail.com>
+Date:   Sun May 14 14:52:09 2023 -0400
+
+    updated return messages in the backend
+
+commit 4d8455aa905be1a04ccee3291b620751e356b14d
+Author: qinyuncao <qinyuncao@umass.edu>
+Date:   Sat May 13 22:55:37 2023 -0400
+
+    Newride Update
+
+commit 00946ada3de11ea42c85b9d962d31216c08da740
+Author: qinyuncao <qinyuncao@umass.edu>
+Date:   Sat May 13 16:09:17 2023 -0400
+
+    Delete test server, added new ride page
+
+commit ccbc4d8c619b3a046da21ed219b9b0458c94eeee
+Merge: a17564c 46b534f
+Author: peilan_wang <lw980627@gmail.com>
+Date:   Thu May 11 22:46:11 2023 -0400
+
+    Merge branch 'main' of https://github.com/qinyuncao/UCar-Carpool
+
+commit a17564ca926089c30e285d8c23e9fd4b1d61ceed
+Author: peilan_wang <lw980627@gmail.com>
+Date:   Thu May 11 22:45:49 2023 -0400
+
+    remove node modules, fix signup
+
+commit 46b534f6089d28cf48ee48a107527bdfcc5f9582
+Merge: 6fc1fec 08cf53a
+Author: qinyuncao <qinyuncao@umass.edu>
+Date:   Thu May 11 22:03:23 2023 -0400
+
+    Merge branch 'main' of https://github.com/qinyuncao/UCar-Carpool
+
+commit 6fc1fec511a87927b38d6f7dc8d5577a651fb390
+Author: qinyuncao <qinyuncao@umass.edu>
+Date:   Thu May 11 22:03:04 2023 -0400
+
+    Update server.js
+
+commit 08cf53a4472cbbddc8963bcea94baa9642f7ecdd
+Author: peilan_wang <lw980627@gmail.com>
+Date:   Thu May 11 21:58:06 2023 -0400
+
+    Remove node modules
+
+commit a47cd169a1d26c63376ef7bddaddd9d8242b681d
+Merge: 607ea6d 0e1415c
+Author: peilan_wang <lw980627@gmail.com>
+Date:   Thu May 11 21:16:02 2023 -0400
+
+    Merge branch 'main' of https://github.com/qinyuncao/UCar-Carpool
+
+commit 607ea6d118183ed09258b32b28a17940eb1fee4e
+Author: peilan_wang <lw980627@gmail.com>
+Date:   Thu May 11 20:09:36 2023 -0400
+
+    rearrange files for modularity
+
+commit 7d134819de61cbae989887a9b65240ca69bd1689
+Author: peilan_wang <lw980627@gmail.com>
+Date:   Thu May 11 15:47:01 2023 -0400
+
+    added the jwt token for login and test route for token
+
+commit 21d6821a786c45287dba48e8bddf7e646968001f
+Author: peilan_wang <lw980627@gmail.com>
+Date:   Thu May 11 13:20:32 2023 -0400
+
+    login, signup, token
+
+commit c6db132602d336ba266e091462943263f761007e
+Author: peilan_wang <lw980627@gmail.com>
+Date:   Wed May 10 09:32:48 2023 -0400
+
+    updated readme for how to run the application
+
+commit bc5389f14fe2382eda277404e23a93896551047f
+Author: peilan_wang <lw980627@gmail.com>
+Date:   Wed May 10 09:31:02 2023 -0400
+
+    added backend with nodejs and mongodb web connection
+
+commit a561ec3b3c9db5e00256fe3a0bb812dce9028163
+Author: peilan_wang <lw980627@gmail.com>
+Date:   Wed May 10 09:30:19 2023 -0400
+
+    added gitignore
+
+commit d8f5974e005c0834fbb9c68f4b4fea43c85d58d3
+Author: peilan_wang <lw980627@gmail.com>
+Date:   Wed May 10 09:05:47 2023 -0400
+
+    react frontend basic setup
+
+commit 0e1415c9a4a5dd236473707ca3faf5214d993325
+Author: qinyuncao <qinyuncao@umass.edu>
+Date:   Wed May 10 03:07:30 2023 -0400
+
+    Update main page and some javascript code
+
+commit aa8eaa840a650a0bf22b0c02c580f8881bdbaeb5
+Author: qinyuncao <qinyuncao@umass.edu>
+Date:   Wed May 10 01:51:59 2023 -0400
+
+    Added mongoDB and bootstrap and node.js
+
+commit 097ab8a276ab1c45f770d1dd9fee11d20a7f597e
+Author: qinyuncao <qinyuncao@umass.edu>
+Date:   Wed May 3 23:07:19 2023 -0400
+
+    Connected the search page with others
+
+commit 94d862768fca1541adfec9f12037a66025ddb3aa
+Author: qinyuncao <qinyuncao@umass.edu>
+Date:   Wed May 3 22:55:59 2023 -0400
+
+    Basic Search Page
+
+commit ff932bd7085bbda34c10b07549988d25e8ff83ae
+Author: qinyuncao <qinyuncao@umass.edu>
+Date:   Wed May 3 00:07:03 2023 -0400
+
+    Main, SignUp, LogIn 1st version
+
+commit 49b71fbb27c5953272eef6aae953524c18919046
+Author: qinyuncao <70119413+qinyuncao@users.noreply.github.com>
+Date:   Tue May 2 21:42:42 2023 -0400
+
+    Initial commit
