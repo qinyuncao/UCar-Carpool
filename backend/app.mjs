@@ -16,7 +16,6 @@ app.use("/ride", ride);
 
 // Global error handling
 app.use((err, _req, res, next) => {
-    console.error(err.stack)
     res.status(500).send('Something broke! Check the back end!')
 })
 

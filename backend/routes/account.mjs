@@ -6,11 +6,6 @@ import { checkUser } from "../middleware/auth.mjs";
 
 const router = express.Router();
 
-// Testing simple get method on the auth collection
-router.get("/test", async (req, res) => {
-    res.status(200).send("1");
-})
-
 // Testing simple get method on the token, returns the loggedin user's username
 router.get("/token", checkUser, async (req, res) => {
     res.sendStatus(200).send(req.user);
@@ -110,7 +105,7 @@ router.get("/getname", checkUser, async (req, res) => {
         return res.status(200).send(result.name);
     }
     else{
-        return res.status(400).send({error: "Same ride already exist!"});
+        return res.status(400).send({error: "User doesn't exist"});
     }
 })
 
